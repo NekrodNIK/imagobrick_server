@@ -2,7 +2,7 @@ from PIL import Image
 from fastapi import FastAPI
 
 from modules.image_manipulate import gen_bricked_image
-from modules.models import GenModel
+from modules.models import GenModel, ImageModel
 
 app = FastAPI()
 
@@ -16,7 +16,10 @@ def gen_image(request: GenModel):
                         mode="RGB"),
     )
 
-    response = GenModel()
-    response.image.data = generated_image.tobytes()
+    response = GenModel(image=ImageModel(
+        data=generated_image.tobytes(),
+        width=request.image.width,
+        height=request.image.height
+    ))
     return response
 

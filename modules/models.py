@@ -9,7 +9,7 @@ class ImageModel(BaseModel):
     height: int
 
 
-class GenModel(BaseModel):
+class RequestModel(BaseModel):
     image: ImageModel
 
     pixel_resolution: Optional[int]
@@ -19,3 +19,8 @@ class GenModel(BaseModel):
     monochrome: Optional[bool]
     invert: Optional[bool]
     contrast: Optional[float]
+
+
+class ResponseModel(BaseModel):
+    image: Optional[ImageModel]
+    instruction_url: Optional[str]
