@@ -9,7 +9,7 @@ class ImageModel(BaseModel):
     height: int
 
 
-class GenRequestModel(BaseModel):
+class GenModel(BaseModel):
     image: ImageModel
 
     pixel_resolution: Optional[int]
